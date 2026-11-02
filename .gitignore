@@ -1,0 +1,33 @@
+# Dependencies and generated output
+node_modules/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+coverage/
+*.egg-info/
+*.log
+
+# Local configuration and data
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.local
+backend/data/
+.netlify/
+.playwright-mcp/
+
+# Editor, operating-system, and office temporary files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.~lock.*#
+~$*

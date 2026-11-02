@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="990" viewBox="0 0 1800 990" role="img" aria-label="C1 · System Context">
+<defs>
+  <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#277AC3" /></marker>
+  <marker id="arrowGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#288459" /></marker>
+  <filter id="soft"><feDropShadow dx="0" dy="3" stdDeviation="7" flood-color="#193451" flood-opacity="0.06"/></filter>
+  </defs>
+<rect x="0" y="0" width="1800" height="990" rx="18" fill="#FCFDFE" stroke="none" stroke-width="2"/>
+<text x="900.0" y="64" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="45" font-weight="700" fill="#15335F">C1 · System Context</text>
+<text x="900.0" y="104" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="23" font-weight="400" fill="#52637A">Sajelly — what is inside the system, and what is outside</text>
+<polyline points="72,124 1728,124" fill="none" stroke="#E3EAF1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="65" y="956" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="20" font-weight="400" fill="#52637A">C1 focuses on the system boundary. Internal components and adapters appear in C3.</text>
+<rect x="85" y="325" width="270" height="270" rx="18" fill="#EEF5FD" stroke="#A4C4E0" stroke-width="2"/>
+<circle cx="117" cy="348" r="12" fill="#15335F"/><path d="M 94,378 Q 94,362 117,362 Q 140,362 140,378Z" fill="#15335F"/>
+<text x="150" y="362" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="27" font-weight="700" fill="#15335F">End user</text>
+<text x="111" y="409" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#52637A">Speaks in Egyptian Arabic</text>
+<text x="111" y="436" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#52637A">Takes a notebook photo</text>
+<text x="111" y="463" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#52637A">Listens to the answer</text>
+<rect x="535" y="295" width="475" height="335" rx="18" fill="#E8F5FE" stroke="#519AD5" stroke-width="2"/>
+<path d="M 551,310 q 0,-7 7,-7 h 17 q 7,0 7,7 v 23 q0,7 -7,7 h -12 l -11,11 v -11 h -1 q -7,0 -7,-7 Z" fill="none" stroke="#15335F" stroke-width="3"/>
+<text x="600" y="332" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="31" font-weight="700" fill="#15335F">Sajelly System</text>
+<text x="561" y="379" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#52637A">Android application + backend</text>
+<text x="561" y="406" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#52637A">Voice questions and answers</text>
+<text x="561" y="433" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#52637A">Customer debts and payments</text>
+<text x="561" y="460" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#52637A">Image-based record import</text>
+<polyline points="355,415 535,415" fill="none" stroke="#277AC3" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowBlue)"/>
+<text x="445" y="388" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="400" fill="#277AC3">voice / image</text>
+<polyline points="535,527 355,527" fill="none" stroke="#277AC3" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowBlue)"/>
+<text x="445" y="560" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="400" fill="#277AC3">spoken reply</text>
+<rect x="1210" y="195" width="495" height="427" rx="20" fill="#F7F3FF" stroke="#C7B5EB" stroke-width="2"/>
+<path d="M 1238,243 q -4,-17 13,-18 q 6,-20 24,-8 q 20,-2 20,14 q 8,19 -11,19 h -38 q -10,0 -8,-7 Z" fill="none" stroke="#714DB4" stroke-width="3"/>
+<text x="1320" y="247" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="27" font-weight="700" fill="#714DB4">External AI services</text>
+<rect x="1240" y="274" width="430" height="90" rx="18" fill="#EBF8F0" stroke="#87C99A" stroke-width="2"/>
+<rect x="1265" y="285" width="14" height="29" rx="7" fill="none" stroke="#288459" stroke-width="3"/><path d="M1256,306 a16,16 0 0 0 32,0 M1272,322v11 M1262,333h20" fill="none" stroke="#288459" stroke-width="3"/>
+<text x="1305" y="311" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="700" fill="#288459">Speech-to-Text</text>
+<text x="1266" y="358" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#52637A">audio → text</text>
+<rect x="1240" y="384" width="430" height="90" rx="18" fill="#EBF8F0" stroke="#87C99A" stroke-width="2"/>
+<path d="M 1256,399 q 0,-7 7,-7 h 17 q 7,0 7,7 v 23 q0,7 -7,7 h -12 l -11,11 v -11 h -1 q -7,0 -7,-7 Z" fill="none" stroke="#288459" stroke-width="3"/>
+<text x="1305" y="421" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="700" fill="#288459">LLM</text>
+<text x="1266" y="468" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#52637A">dialogue and tool requests</text>
+<rect x="1240" y="494" width="430" height="90" rx="18" fill="#EBF8F0" stroke="#87C99A" stroke-width="2"/>
+<path d="M 1256,509 q 0,-7 7,-7 h 17 q 7,0 7,7 v 23 q0,7 -7,7 h -12 l -11,11 v -11 h -1 q -7,0 -7,-7 Z" fill="none" stroke="#288459" stroke-width="3"/>
+<text x="1305" y="531" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" font-weight="700" fill="#288459">Text-to-Speech</text>
+<text x="1266" y="578" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#52637A">text → audio</text>
+<polyline points="1010,376 1210,376" fill="none" stroke="#277AC3" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowBlue)"/>
+<text x="1110" y="353" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="400" fill="#277AC3">requests</text>
+<polyline points="1210,466 1010,466" fill="none" stroke="#277AC3" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrowBlue)"/>
+<text x="1110" y="497" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="400" fill="#277AC3">responses</text>
+<rect x="1220" y="701" width="445" height="160" rx="18" fill="#FFF7E4" stroke="#E7C16B" stroke-width="2"/>
+<ellipse cx="1252" cy="716" rx="20" ry="8" fill="none" stroke="#B47F17" stroke-width="3"/><path d="M 1232,716 V 751 Q 1252,765 1272,751 V 716 M 1232,733 Q 1252,746 1272,733" fill="none" stroke="#B47F17" stroke-width="3"/>
+<text x="1285" y="738" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="25" font-weight="700" fill="#B47F17">Persistent Database</text>
+<text x="1246" y="785" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#52637A">Customer identities, ledger history</text>
+<text x="1246" y="812" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="17" font-weight="400" fill="#52637A">and pending confirmations</text>
+<polyline points="1010,567 1085,567 1085,782 1220,782" fill="none" stroke="#277AC3" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" marker-start="url(#arrowBlue)" marker-end="url(#arrowBlue)"/>
+<text x="1095" y="676" text-anchor="start" font-family="DejaVu Sans, Arial, sans-serif" font-size="19" font-weight="400" fill="#277AC3">read / write</text>
+</svg>
