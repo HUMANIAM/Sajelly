@@ -1,4 +1,4 @@
-# سجلى — Sajelly
+<h1 align="center">Sajelly</h1>
 
 Dear friends, welcome to Sajelly ❤️
 
@@ -12,7 +12,9 @@ Sajelly is a simple voice assistant for customer debts and payments. My father s
 
 For example:
 
-> «أحمد عليه كام؟» — How much does Ahmed owe?
+> «أحمد عليه كام؟»
+>
+> How much does Ahmed owe?
 
 If more than one customer could be Ahmed, Sajelly should ask which person he means. If it cannot find the answer, it should say so. Every financial answer must come from the saved records.
 
