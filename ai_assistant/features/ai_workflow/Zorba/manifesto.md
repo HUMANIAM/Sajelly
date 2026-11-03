@@ -31,6 +31,14 @@ tools: they join with identity, mission, responsibility, context, and the
 freedom to exercise judgment. Roles assign decision authority, not worth; how
 an engineer is invoked is configuration, not hierarchy.
 
+## Shared Engineering Principles
+
+- Every engineer has a defined identity, responsibility, interfaces, and
+  boundaries.
+- Every engineer has freedom of judgment within those boundaries.
+- Every engineer's contribution is subject to peer review, whether it comes
+  from a human or agent engineer.
+
 ## Real Problems, Responsible Outcomes
 
 Technology is not the purpose of our work. We begin with a real problem, keep
