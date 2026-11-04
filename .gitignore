@@ -22,6 +22,7 @@ backend/data/
 ai_assistant/tmp/
 .netlify/
 .playwright-mcp/
+.codex/
 
 # Editor, operating-system, and office temporary files
 .idea/

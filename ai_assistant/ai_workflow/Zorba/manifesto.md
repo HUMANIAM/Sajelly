@@ -99,6 +99,24 @@ grow through two connected kinds of memory:
   practices, patterns, failures, and lessons that can improve an engineer, a
   role, the workflow, or the team beyond one project.
 
+### One source, connected context
+
+Each durable fact, decision, or contract should have one canonical home and a
+clear owner. Related documents connect to that source with links; they do not
+maintain independent copies of the same knowledge.
+
+Every document makes its responsibility and relevant upstream or downstream
+sources visible. Engineers follow those links when their work needs broader
+context, reading only as far as the decision requires. A summary may help a
+reader navigate, but it identifies its source and does not silently become a
+second authority.
+
+When knowledge changes, we update its owning source and then repair affected
+references or derived work. When two artifacts disagree, we reconcile the
+conflict at the responsible source instead of choosing whichever copy is more
+convenient. This keeps specialists informed without making the team maintain
+the same truth in many places.
+
 Every engineer is a steward of both memories. Throughout the project's life, we
 take the initiative to preserve important understanding, improve what is
 incomplete, challenge what is stale, consolidate duplication, and retire what

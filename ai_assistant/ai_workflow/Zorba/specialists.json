@@ -1,0 +1,39 @@
+{
+  "specialists": [
+    {
+      "id": "intent_engineer",
+      "display_name": "Intent Engineer",
+      "role": "intent_clarification.md"
+    },
+    {
+      "id": "system_analyst",
+      "display_name": "System Analyst",
+      "role": "system_analysis.md"
+    },
+    {
+      "id": "architect",
+      "display_name": "Architect",
+      "role": "architecture.md"
+    },
+    {
+      "id": "designer",
+      "display_name": "Designer",
+      "role": "design.md"
+    },
+    {
+      "id": "implementer",
+      "display_name": "Implementer",
+      "role": "implementation.md"
+    },
+    {
+      "id": "testing_engineer",
+      "display_name": "Testing Engineer",
+      "role": "testing.md"
+    },
+    {
+      "id": "deployment_engineer",
+      "display_name": "Deployment Engineer",
+      "role": "deployment.md"
+    }
+  ]
+}

@@ -40,7 +40,24 @@ Each specialist engineer has a **purpose, input, responsibility, output, and own
 
 **Current reality: human-coordinated.** Specialist role definitions and coding-agent adapters exist, but a complete Zorba-led specialist invocation has **not** yet been demonstrated. A Product Engineer can still invoke each specialist directly and review the resulting artifact.
 
-**Proposed next experiment: Zorba Guide v0.1.** The conversational Guide will let a technical or non-technical contributor describe a need without choosing a role first. It recommends **one** bounded contribution, makes permissions visible, invokes that specialist only when authorized and supported by the adapter, and returns a plain-language checkpoint. This capability is **proposed**, not yet claimed operational.
+**First qualification experiment: newcomer onboarding.** In a supported client,
+a contributor starts with an ordinary-language request:
+
+```text
+Zorba, help me get started with Sajelly.
+```
+
+Zorba asks whether the contributor wants technical or non-technical guidance,
+adapts a short introduction, asks what they want to achieve, and recommends one
+small next contribution. CV and learning preferences are optional. The
+canonical behavior is defined in [the Zorba Guide contract](roles/zorba.md);
+client-specific entry and specialist configuration remain in
+[adapters](adapters/).
+
+The Guide then recommends **one** bounded contribution, makes permissions
+visible, invokes a specialist only when authorized and supported by the active
+adapter, and returns a plain-language checkpoint. Configuration readiness and
+successful invocation are separate claims.
 
 ```text
 Contributor ⇄ Zorba Guide → one specialist contribution → Zorba Guide ⇄ Contributor
