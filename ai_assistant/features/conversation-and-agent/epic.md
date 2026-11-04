@@ -22,13 +22,13 @@ Understand intent, maintain context, clarify, and request tools.
 
 **Requirements:** AG-001–008
 
-**Sources:** [Problem definition](../../../docs/problem_definition.md), [system requirements](../../../docs/system_requirements.md), and [C3 backend diagram](../../../docs/architecture/sajelly_C1_C2_C3/C3_backend_components.svg).
+**Sources:** [Product definition](../../../docs/product_definition.md), [system requirements](../../../docs/system_requirements.md), and [C3 backend diagram](../../../backend/docs/architecture/diagrams/C3_components.svg).
 
 ## Delivery scope
 
 **First voice-query release:** Yes.
 
-See the [shared first milestone](../../../README.md#our-first-milestone) for the complete voice-query flow and the [working agreement](../../../README.md#how-you-can-help) for ownership and verification.
+See the [first runnable slice](../../../docs/system_requirements.md#12-first-release-and-later-work) for the complete voice-query flow and the [contribution expectations](../../../README.md#contribution-expectations) for ownership and verification.
 
 ## Future Jira planning
 
