@@ -10,7 +10,7 @@ Building useful software requires more than generating code. It requires underst
 
 **Zorba is a reusable engineering team, not a Sajelly-specific workflow.** Product Engineers (humans) and Agent Engineers contribute as teammates: they have defined responsibilities, can challenge one another, and propose changes for peer review. The goal is to carry this engineering practice into future projects.
 
-Each engineer has a **purpose, input, responsibility, output, and ownership boundary**. Their role document is both an introduction to the engineer and a contract that teammates can understand and review.
+Each specialist engineer has a **purpose, input, responsibility, output, and ownership boundary**. Their role document is both an introduction and a reviewable contract. **Zorba Guide** is the contributor-facing coordination layer, not an additional technical decision-maker.
 
 ## Where to begin
 
@@ -19,7 +19,7 @@ Each engineer has a **purpose, input, responsibility, output, and ownership boun
 | [`manifesto.md`](manifesto.md) | The team's shared identity, values, and commitments. |
 | [`requirements.md`](requirements.md) | What Zorba as a system is expected to support. |
 | [`docs/`](docs/) | Diagrams of the workflow, decomposition, collaboration, and review ideas. |
-| [`roles/`](roles/) | Each engineer's responsibility and documented input/output contract. |
+| [`roles/`](roles/) | Specialist contracts and the proposed [Zorba Guide](roles/zorba.md). |
 | [`templates/`](templates/) | Shared Git commit and pull request conventions. |
 
 ## Meet the engineers
@@ -38,16 +38,18 @@ Each engineer has a **purpose, input, responsibility, output, and ownership boun
 
 ## How to use Zorba today
 
-**Current state: manually coordinated.** Agent Engineers are invoked individually; they do **not** yet communicate with one another directly or run an automated orchestration workflow. The Product Engineer supplies context, reviews the result, and takes the agreed artifact to the next engineer when necessary.
+**Current reality: human-coordinated.** Specialist role definitions and coding-agent adapters exist, but a complete Zorba-led specialist invocation has **not** yet been demonstrated. A Product Engineer can still invoke each specialist directly and review the resulting artifact.
 
-For example, to explore a new Sajelly capability:
+**Proposed next experiment: Zorba Guide v0.1.** The conversational Guide will let a technical or non-technical contributor describe a need without choosing a role first. It recommends **one** bounded contribution, makes permissions visible, invokes that specialist only when authorized and supported by the adapter, and returns a plain-language checkpoint. This capability is **proposed**, not yet claimed operational.
 
-1. **Intent Engineer:** Provide the idea or problem. Review the clarified activity and desired outcome.
-2. **System Analyst:** Supply the accepted intent and project context. Review the expected behaviors and acceptance conditions.
-3. **Architect:** Supply the agreed requirements and current system context. Review boundaries, interactions, runtime behavior, and significant decisions.
-4. **Continue only as needed:** Involve the Designer, Implementer, Tester, or Deployment Engineer according to the work's goal.
+```text
+Contributor ⇄ Zorba Guide → one specialist contribution → Zorba Guide ⇄ Contributor
+                      (authorized)             (evidence + next choice)
+```
 
-This is an **example path**, not a rule to invoke every engineer. If an artifact is unclear, return to its responsible engineer with a concrete question. Do not silently invent an answer.
+A contributor may approve the recommendation, inspect more detail, choose another specialist, say **“Pick for me”** (one permitted contribution, not autopilot), or stop. A technical contributor may also request `#analysis`, `#architecture`, or `#test`; the Guide remains the conversational interface. The next contribution is not invoked automatically.
+
+**First pilot:** Report a suspected duplicate payment in ordinary language. Ask the Testing Engineer to investigate with explicit scope; return the actual result and next choices. If adapter invocation is unavailable, Zorba must say it did not run and provide an explicit handoff. Keep all PR review, code ownership, and safety controls unchanged.
 
 ### Engineering artifacts and memory
 
@@ -74,8 +76,8 @@ Every task belongs to a feature; every feature belongs to an epic. The objective
 
 ## Current boundaries and next steps
 
-This repository contains the **initial role and workflow design**, not proof that an autonomous engineering team is operational. We are starting with Markdown contracts, independent agent sessions, human coordination, and peer-reviewed artifacts. Agent-to-agent communication, tool integration, and controlled execution environments are future work.
+This repository contains **role contracts and a proposed Zorba Guide pilot**, not proof of an autonomous engineering team. Direct specialist invocation and manual coordination remain available. The pilot adds **one authorized specialist invocation per contributor checkpoint**; general agent-to-agent orchestration and controlled execution environments remain future work.
 
 Engineers may propose improvements to their own roles, contracts, templates, and practices through PRs. Their accumulated experience should improve the team, but new rules should follow evidence rather than ceremony.
 
-**A useful first test:** Give one engineer a real, scoped activity. Check whether its input is understandable, its output can be reviewed, and another engineer could continue from the artifact without guessing essential facts.
+**A useful first test:** Give Zorba an ordinary-language request, authorize one specialist investigation, and check whether the result is honest, evidence-backed, reviewable, and resumable. Do not claim a successful agent invocation until it actually runs.

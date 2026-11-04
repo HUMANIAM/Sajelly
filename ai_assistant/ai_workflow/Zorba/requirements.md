@@ -1,11 +1,11 @@
 # Zorba — Living Engineering Team
 ## System Requirements (Consolidated)
 
-**Version:** 0.4<br>
-**Status:** System analysis complete — proposed baseline for team review (not yet approved)<br>
-**Scope:** The engineering team as a whole, not individual role specifications<br>
-**Source:** Living Engineering Team Manifesto and the team's system-analysis discussions<br>
-**Previous draft:** Version 0.3, superseded by this consolidation and not included in this package
+**Version:** 0.5 — Zorba Guide pilot proposal  
+**Status:** Proposed update for review — not implemented or approved  
+**Scope:** The engineering team as a whole, not individual role specifications  
+**Source:** Living Engineering Team Manifesto and the team's system-analysis discussions  
+**Previous draft:** Version 0.4, available in this file's Git history
 
 ## 1. The need
 
@@ -20,12 +20,12 @@ The **Living Engineering Team Manifesto** defines culture and values. This docum
 ## 2. Boundaries and agreed terms
 
 - **Engineer:** A human or agent teammate. The same standards of contribution, evidence, review, and respectful disagreement apply to both. Real capability and permission limits are made explicit.
-- **Role:** A continuing area of engineering responsibility, with an owner. The initial roles are **Client / Intent Clarification, System Analyst, Architect, Designer, Implementer, Tester, and Deployment Engineer**. This is a map of responsibilities, **not a mandatory sequence**.
+- **Role:** A continuing area of engineering responsibility, with an owner. The specialist roles are **Intent Clarification, System Analyst, Architect, Designer, Implementer, Tester, and Deployment Engineer**. This is a map of responsibilities, **not a mandatory sequence**. **Zorba Guide** is the contributor-facing conversation and coordination layer, not another technical decision role.
 - **Activity / work item:** A human or agent engineer brings an idea, problem, feature, bug, experiment, test improvement, design change, release, or team improvement. The initiator and collaborators clarify what they want to achieve; the category guides the relevant roles but does not dictate a fixed route.
 - **Epic:** A coherent, bounded responsibility or feature that a teammate can own end to end. It may be decomposed into small, reviewable tasks and PRs, and may require help from several roles.
 - **Feature workspace:** `ai_assistant/features/<feature>/` holds exploration, discussion, proposals, activity clarification, and phase work. A phase artifact may be one Markdown file or several, or may be code/tests in the main codebase rather than a duplicate document. **This is not canonical project memory.**
 - **Project memory:** `docs/` holds the accepted project understanding—requirements, architecture, design, RFCs, ADRs, retrospectives, and related decisions. Source code, configuration, and `data/` are project context and actual system artifacts.
-- **Engineering memory:** The reusable, project-agnostic team's identities, roles, skills, tools, templates, manifesto, and playbooks under `ai_assistant/ai_workflow/Zorba/`. It should be portable to another project without carrying Sajelly-specific assumptions.
+- **Engineering memory:** The reusable, project-agnostic team's identities, roles, skills, tools, templates, manifesto, and playbooks, in this repository under `ai_assistant/ai_workflow/Zorba/`. It should be portable to another project without carrying Sajelly-specific assumptions.
 - **Engineering handoff:** A concise, readable exchange between roles using Markdown and links to relevant artifacts. It communicates intent, accepted facts, decisions, outstanding questions, and the outcome the next engineer is asked to produce. It is **bidirectional**: an engineer can request clarification from any relevant teammate.
 - **GitHub:** Git stores accepted artifacts and their history. Pull requests (PRs) are the common way to propose, discuss, test, review, and accept changes. A draft PR is work in progress.
 - **Temporary laboratory:** `ai_assistant/tmp/` is a disposable, Git-ignored place for probes and experiments. Important results are preserved elsewhere before the lab is discarded.
@@ -59,7 +59,7 @@ IDs are retained from our discussions so they can be referenced in tests, PRs, a
 | TEAM-027 | Work entering the repository shall be split into understandable, reviewable PRs when practical. |
 | TEAM-028 | A meaningful change in agreed scope or intended outcome shall be visible and reviewed by the responsible owner before continuing. |
 | TEAM-050 | The team shall let an initiator express an activity in ordinary language, clarify its category, relevant problem or need, and intended outcome without requiring a complete lifecycle plan. |
-| TEAM-051 | When clarification matters to later work, the team shall preserve the resulting activity in the feature workspace as a short, revisable Markdown artifact; `activity.md` is a proposed initial filename, not a mandatory system-wide interface. |
+| TEAM-051 | When clarification matters to later work, the team shall preserve it in the feature workspace using the agreed role artifact (for example `intent_clarification.md`), without requiring one file for every exchange. |
 | TEAM-053 | The team shall support assigning an epic to one accountable contributor who may take it end to end, request help from teammates, and split delivery into independently reviewable changes. |
 
 ### C. Collaboration, handoffs, and disagreement
@@ -121,11 +121,26 @@ IDs are retained from our discussions so they can be referenced in tests, PRs, a
 | TEAM-044 | After initial bootstrap, engineers responsible for roles shall be able to maintain and improve the reusable guidance and capabilities of those roles through peer-reviewed changes. |
 | TEAM-045 | Engineers shall be able to initiate such improvements from daily work, experiments, retrospectives, or independent reflection, not only from formally assigned tasks. |
 
+### G. Contributor interaction and bounded specialist delegation (proposed v0.5)
+
+| ID | Requirement |
+|---|---|
+| TEAM-056 | The team shall offer a Zorba conversation entry point for technical and non-technical contributors using ordinary language; direct specialist access remains available. |
+| TEAM-057 | Zorba shall use current context to recommend **one useful next specialist contribution** with its purpose, expected result, and available choices, rather than force a fixed sequence. |
+| TEAM-058 | The pilot shall allow Zorba to invoke at most **one bounded, authorized specialist contribution** through an available adapter, then return to a contributor checkpoint before any further invocation. Original explicit authorization may be reused for that same bounded contribution. |
+| TEAM-059 | “Pick for me” shall mean choose and perform one safe, permitted next contribution, then stop at a checkpoint. It shall not confer additional write, merge, privileged-operation, deployment, or continuing-autopilot authority. |
+| TEAM-060 | Each Zorba-to-specialist handoff and returned result shall communicate objective, relevant context, scope and permissions, expected output, status, evidence, limitations, and open questions as applicable; a separate document is not required for each exchange. |
+| TEAM-061 | Zorba shall distinguish its handoff-completeness check from independent technical review, testing, CI results, contributor acceptance, and PR approval; all claims of completion shall remain evidence-backed. |
+| TEAM-062 | On blocked, failed, interrupted, or partial work, Zorba shall stop dependent work and report actual changes, remaining risks, and safe recovery information when known. |
+| TEAM-063 | Where coordination affects tracked work, Zorba shall preserve enough accepted objective, decisions, status, artifact links, evidence, and next choices to resume without chat history, using existing repository and GitHub records rather than a separate workflow database. |
+
+**Pilot boundary:** No autonomous end-to-end execution, parallel write-capable agent teams, self-approval, production deployment, migration, publication, privileged or destructive operations. Existing review and ownership requirements remain unchanged.
+
 **Important:** These requirements describe capabilities and guardrails. They do **not** require one file, one meeting, or one approval per requirement.
 
 ## 4. Communication interfaces — what must survive a handoff
 
-These are **information contracts**, not agent prompts, mandatory forms, or prescribed filenames. Markdown is the first shared language. The owning engineer decides what format best conveys its result; the role contracts provide optional starting templates where a template helps.
+These are **information contracts**, not agent prompts, mandatory forms, or prescribed filenames. Markdown is the first shared language. The owning engineer decides what format best conveys its result, using the existing role contracts and templates when applicable.
 
 | Boundary | Information needed by the next engineer | Not required |
 |---|---|---|
@@ -134,6 +149,9 @@ These are **information contracts**, not agent prompts, mandatory forms, or pres
 | System Analyst → Architect (when design is needed) | Agreed functional behavior, relevant quality and safety constraints, system boundaries or external interactions, acceptance scenarios, assumptions and unresolved questions | Classes, modules, frameworks or implementation details |
 | Any engineer → another owner | What needs the owner's decision/change, why, supporting evidence and context, urgency or dependencies | A new workflow engine or meeting |
 | Engineer → PR reviewer | Goal, change, relevant artifacts, testing results, known gaps and review focus | Separate Markdown duplicates of code/tests already in the PR |
+| Contributor → Zorba Guide | Intent in ordinary language, existing context, optional specialist hint, authorization for the specific action | Knowledge of the specialist role catalog |
+| Zorba Guide → Specialist → Zorba Guide | Purpose, scoped and permitted action, context, expected result; then status, artifacts, evidence, uncertainty and next options | Automatic invocation of additional engineers |
+| Zorba Guide → Contributor | Plain-language result, actual evidence/limitations and a choice to continue, inspect, redirect or stop | A fabricated quality review or a forced next step |
 
 **Example.** A teammate can take the Sajelly *customers-ledger-and-safety* epic. They should be able to read the accepted product requirements and relevant feature workspace, agree the epic boundary and DoD, then deliver a series of focused PRs. They can request Analyst, Architect, Designer, or Tester contributions when their work crosses ownership boundaries. The epic owner remains accountable for bringing the epic to its agreed outcome, not for personally performing every role.
 
@@ -141,120 +159,118 @@ These are **information contracts**, not agent prompts, mandatory forms, or pres
 
 ### S1 — A feature stops at analysis
 
-**Given** an engineer has an idea and only wants to understand the need,<br>
-**When** they engage the Client / Intent Clarification and/or System Analyst roles,<br>
-**Then** the work can produce a clear, reviewed analysis and stop without invoking design, implementation, testing, or deployment.
+**Given** an engineer has an idea and only wants to understand the need,  
+**When** they engage Intent Clarification and/or System Analysis,  
+**Then** the work can produce a clear, reviewed analysis and stop without invoking design, implementation, testing, or deployment.  
 **Relevant:** TEAM-001, TEAM-022–024, TEAM-026.
 
 ### S2 — A bug fix remains small
 
-**Given** a bug is reproducible and no design contract needs changing,<br>
-**When** an Implementer fixes it, adds an appropriate regression test, and opens a PR,<br>
-**Then** another engineer can inspect the reproduction, fix, test evidence, and known limits without forcing unrelated lifecycle phases.
+**Given** a bug is reproducible and no design contract needs changing,  
+**When** an Implementer fixes it, adds an appropriate regression test, and opens a PR,  
+**Then** another engineer can inspect the reproduction, fix, test evidence, and known limits without forcing unrelated lifecycle phases.  
 **Relevant:** TEAM-006, TEAM-023–027, TEAM-031–037.
 
 ### S3 — Work crosses ownership boundaries
 
-**Given** an Implementer discovers that an agreed design contract must change,<br>
-**When** they ask the responsible Designer or Architect for a change,<br>
-**Then** that engineer reviews the request, updates or maintains the contract with reasons, and returns the decision before the affected work proceeds.
+**Given** an Implementer discovers that an agreed design contract must change,  
+**When** they ask the responsible Designer or Architect for a change,  
+**Then** that engineer reviews the request, updates or maintains the contract with reasons, and returns the decision before the affected work proceeds.  
 **Relevant:** TEAM-010–013, TEAM-018, TEAM-025.
 
 ### S4 — Engineers disagree
 
-**Given** two engineers—human or agent—disagree on a material decision,<br>
-**When** a direct exchange does not resolve it,<br>
-**Then** either may propose an RFC, independent reviewers are assigned, both positions remain available, and the result and reasoning are recorded.
+**Given** two engineers—human or agent—disagree on a material decision,  
+**When** a direct exchange does not resolve it,  
+**Then** either may propose an RFC, independent reviewers are assigned, both positions remain available, and the result and reasoning are recorded.  
 **Relevant:** TEAM-003, TEAM-015.
 
 ### S5 — Review is independent of author identity
 
-**Given** an agent or human engineer completes a change,<br>
-**When** they mark its PR ready for review,<br>
-**Then** the description and test evidence are available, relevant CI checks pass, and another engineer reviews it before merge.
+**Given** an agent or human engineer completes a change,  
+**When** they mark its PR ready for review,  
+**Then** the description and test evidence are available, relevant CI checks pass, and another engineer reviews it before merge.  
 **Relevant:** TEAM-029–037, TEAM-043.
 
 ### S6 — Work resumes after months
 
-**Given** the team returns to a feature months later,<br>
-**When** an engineer reads its working artifacts, accepted project docs, and Git history,<br>
-**Then** they can identify what was decided, what is current, what remains uncertain, and what to do next without relying on a previous chat session.
+**Given** the team returns to a feature months later,  
+**When** an engineer reads its working artifacts, accepted project docs, and Git history,  
+**Then** they can identify what was decided, what is current, what remains uncertain, and what to do next without relying on a previous chat session.  
 **Relevant:** TEAM-004, TEAM-014, TEAM-038–042, TEAM-046–047.
 
 ### S7 — The team improves itself
 
-**Given** an agent or human engineer identifies a better practice through experience or reflection,<br>
-**When** they propose a PR changing their role, skill, template, or tool,<br>
-**Then** another engineer can review the reason and evidence, and the accepted improvement remains available for future projects without importing unrelated product assumptions.
+**Given** an agent or human engineer identifies a better practice through experience or reflection,  
+**When** they propose a PR changing their role, skill, template, or tool,  
+**Then** another engineer can review the reason and evidence, and the accepted improvement remains available for future projects without importing unrelated product assumptions.  
 **Relevant:** TEAM-005, TEAM-019–021, TEAM-044–045, TEAM-048.
 
 ### S8 — A work intent becomes a clear starting point
 
-**Given** a teammate reports a bug but cannot yet explain its cause,<br>
-**When** they request Intent Clarification,<br>
-**Then** the team can record a small activity describing the observed symptom, desired outcome, known context, category and unresolved questions; the work can then enter the appropriate engineering role without pretending that a diagnosis already exists.
+**Given** a teammate reports a bug but cannot yet explain its cause,  
+**When** they request Intent Clarification,  
+**Then** the team can record a small activity describing the observed symptom, desired outcome, known context, category and unresolved questions; the work can then enter the appropriate engineering role without pretending that a diagnosis already exists.  
 **Relevant:** TEAM-022–024, TEAM-050–052.
 
 ### S9 — A teammate owns an epic end to end
 
-**Given** another engineer volunteers for Sajelly's *conversation-and-agent* epic,<br>
-**When** they inspect its accepted docs, dependencies and feature workspace,<br>
-**Then** they can define a clear DoD, plan reviewable PRs, seek specialist contributions, and deliver the epic's agreed outcome with traceable evidence and independent review.
+**Given** another engineer volunteers for Sajelly's *conversation-and-agent* epic,  
+**When** they inspect its accepted docs, dependencies and feature workspace,  
+**Then** they can define a clear DoD, plan reviewable PRs, seek specialist contributions, and deliver the epic's agreed outcome with traceable evidence and independent review.  
 **Relevant:** TEAM-010–013, TEAM-027, TEAM-040, TEAM-053–054.
 
 ### S10 — The Architect receives a usable requirements contract
 
-**Given** an initiative has reached agreement about expected behavior and constraints,<br>
-**When** the System Analyst hands it to the Architect,<br>
-**Then** the Architect can identify the required behaviors, acceptance outcomes, quality constraints, and open questions without treating an unexamined implementation suggestion as a binding requirement; the Architect may ask the Analyst or initiator for clarification.
+**Given** an initiative has reached agreement about expected behavior and constraints,  
+**When** the System Analyst hands it to the Architect,  
+**Then** the Architect can identify the required behaviors, acceptance outcomes, quality constraints, and open questions without treating an unexamined implementation suggestion as a binding requirement; the Architect may ask the Analyst or initiator for clarification.  
 **Relevant:** TEAM-003, TEAM-007, TEAM-025, TEAM-052, TEAM-055.
+
+### S11 — A newcomer uses one specialist through Zorba
+
+**Given** a contributor reports that Sajelly sometimes records one payment twice, without knowing engineering role names,  
+**When** Zorba proposes a bounded Testing Engineer investigation, the contributor authorizes it (or selects “Pick for me” within permitted scope), and the adapter invokes the specialist,  
+**Then** Zorba returns the actual status, evidence or inability to reproduce, artifacts and limitations, and a choice to continue, inspect, redirect, or stop. It neither claims independent review nor calls another engineer without a new decision. Tracked work can later be resumed from repository evidence.  
+**Relevant:** TEAM-056–063, TEAM-006, TEAM-030–033.
 
 ## 6. Explicit non-goals for this version
 
 - No mandatory end-to-end sequence for every work item.
-- No orchestration engine, multi-agent hierarchy, or automatic specialist invocation.
+- No general orchestration engine, multi-agent hierarchy, autonomous chain, or **automatic second specialist invocation**. One authorized specialist invocation per contributor checkpoint is allowed for the proposed pilot.
 - No separate work-tracking service or memory database replacing Git/GitHub.
 - No mandatory full set of phase files for every feature. Code and tests can be sufficient phase artifacts.
 - No forced conversion of every idea into an epic or every chat into a permanent document.
-- No requirement to define executable agent skills, prompts, or automated handoff machinery in this baseline.
-- No duplication of individual role contracts inside these system-level requirements.
+- No vendor-specific instructions or runtime implementation in this system requirements document. Role contracts are maintained separately in `roles/`.
 - No requirement for agents to have personal emails, GitHub accounts, names, or other decorative identities at bootstrap.
 
-## 7. Open questions — only those that can change system behavior
+## 7. Operating decisions
 
-1. **Unavailable owner:** What should happen when the responsible engineer is unavailable and a change cannot reasonably wait?
-2. **RFC outcome:** Who records and has authority to settle an RFC after assigned peer reviewers consider it? How does that fit the responsible role's ownership?
-3. **Protected operations:** Which actions, if any, need additional safeguards beyond normal peer review (for example, deployment credentials, destructive actions, or access to private data)?
-4. **Repository adoption:** Which accepted Sajelly project docs should link to this proposed baseline if it is adopted?
+- **Unavailable owner:** Zorba shall tell the teammate who started the conversation which owner is unavailable and what cannot proceed, recommend one resolution, and offer understandable alternatives: wait, ask an available and appropriate engineer to explicitly accept the bounded responsibility, redirect the work, or stop. The initiating teammate chooses the next coordination step. Any ownership change shall be explicit and scoped; it does not transfer technical authority to Zorba or an unrelated specialist. If no appropriate engineer accepts ownership, the affected work remains blocked.
+- **Unresolved RFC:** It may stay pending or be rejected. No forced escalation or artificial agreement.
+- **Protected operations:** The initial Zorba pilot does not execute privileged, destructive, publishing, production deployment, or migration operations.
 
-These questions remain visible for team governance and architectural risk assessment. They do **not** require answers before the role contracts can be exercised in a small manual pilot; any behavior that depends on one must be explicit in the relevant change.
+## 8. Requirements versus role design
 
-## 8. Requirements vs. role design
-
-System requirements end here. Role-specific responsibilities and input/output contracts live in [`roles/`](roles/). They are engineering-memory artifacts governed by this baseline, but they can evolve independently through peer-reviewed changes.
-
-The initial role set is Intent Clarification, System Analysis, Architecture, Design, Implementation, Testing, and Deployment. The [`README`](README.md#meet-the-engineers) introduces the team and links to each role contract.
-
-**`intent_clarification/`** is the preferred folder name for the Client role. This is a naming convention, not an additional role.
+These requirements describe team-wide observable behavior. The contributor-facing Zorba contract lives in `roles/zorba.md`; specialist contracts remain in their own role documents. Adapters implement invocation mechanics without redefining those contracts.
 
 ## 9. Definition of Done for system analysis
 
-This draft can be approved when:
+The proposed v0.5 pilot requirements are ready for team review when:
 
 - The team agrees that it describes **system-wide capabilities**, not a particular agent architecture.
 - A new feature, a small bug fix, an ownership handoff, an independently owned epic, an RFC, and an engineer-led self-improvement can each be traced to observable requirements.
 - Project memory, feature workspace, and engineering memory are distinguishable.
 - Any remaining questions are explicit rather than silently answered through implementation.
 
-The candidate baseline is **ready for human team review**. Approval would establish the system-level baseline against which the role contracts and future architecture are reviewed; it would **not** assert that the workflow is already implemented or proven.
+This is a **review proposal**, not proof of orchestration. Even after approval, invocation, permission handling, reporting, and resume behavior must be tested with a real adapter.
 
 ---
 
-### Changes since v0.3
+### Changes since v0.4 (proposed)
 
-- Integrated the handwritten notes: engineer-initiated activities, category-based starts, and an optional tracked `activity.md` before analysis.
-- Aligned RFC peer review with the same human/agent review principle as other PRs.
-- Defined **logical Markdown handoffs** between initiator, intent clarification, System Analyst, Architect and PR reviewer, without specifying agent prompts or an orchestration engine.
-- Made **end-to-end epic ownership**, reviewable work slices, and traceability explicit (`TEAM-050`–`TEAM-055`).
-- Added observable examples for intent intake, independently owned Sajelly epics, and the architecture handoff.
-- Kept the original `TEAM-001`–`TEAM-049` IDs and Architect role requirements separate.
+- Introduced Zorba as a contributor-facing coordination layer rather than an eighth technical owner.
+- Permitted a single authorized specialist invocation, followed by a contributor checkpoint (`TEAM-056`–`TEAM-063`).
+- Clarified “Pick for me”, honest execution states, contract checks versus independent review, and durable coordination state.
+- Reconciled the `intent_clarification.md` artifact name and current repository workflow path.
+- Preserved all existing requirement IDs and role ownership boundaries.
