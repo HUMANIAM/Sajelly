@@ -43,7 +43,7 @@ The artifact helps a receiving engineer understand **the work to do**, not the s
 When an activity produces a repository change, its commit activity describes
 **why the committed change exists**, not merely which files it changes. Use one
 of these values as the `activity` in the Git commit header defined by
-[`git_commit.md`](../templates/git_commit.md).
+[`git_commit.md`](../practices/git_commit.md).
 
 | Activity | Intention |
 | --- | --- |
