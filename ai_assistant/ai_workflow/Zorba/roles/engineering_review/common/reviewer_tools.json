@@ -1,0 +1,75 @@
+{
+  "manifest_version": "1.0",
+  "scope": "frontend_and_backend_engineering_reviewers",
+  "default_permission": "read_only",
+  "capabilities": [
+    {
+      "id": "change_context",
+      "description": "Read PR title, description, base/head commits and status",
+      "github_actions": ["get_pr_info"],
+      "local_git_command": "overview",
+      "mandatory_for_github_pr": true
+    },
+    {
+      "id": "changed_files",
+      "description": "Discover complete changed file inventory",
+      "github_actions": ["list_pr_changed_filenames"],
+      "local_git_command": "overview",
+      "mandatory_for_github_pr": true
+    },
+    {
+      "id": "diff",
+      "description": "Read full PR patch, and individual file patches when needed",
+      "github_actions": ["fetch_pr_patch", "fetch_pr_file_patch", "get_pr_diff"],
+      "local_git_command": "diff",
+      "mandatory_for_github_pr": true
+    },
+    {
+      "id": "file_at_revision",
+      "description": "Read full files or ranges at immutable commit SHAs",
+      "github_actions": ["fetch_file"],
+      "local_git_command": "file",
+      "mandatory_for_github_pr": true
+    },
+    {
+      "id": "history",
+      "description": "Inspect commits and surrounding change history",
+      "github_actions": ["fetch_commit"],
+      "local_git_command": "history",
+      "mandatory_for_github_pr": false
+    },
+    {
+      "id": "review_discussion",
+      "description": "Read existing PR conversation, submitted reviews and inline threads",
+      "github_actions": ["fetch_pr_comments", "list_pull_request_review_threads", "list_pull_request_reviews"],
+      "local_git_command": null,
+      "mandatory_for_github_pr": false
+    },
+    {
+      "id": "ci_evidence",
+      "description": "Read commit status, workflow runs, jobs and logs when permissions allow",
+      "github_actions": ["get_commit_combined_status", "fetch_commit_workflow_runs", "fetch_workflow_run_jobs", "fetch_workflow_job_logs"],
+      "local_git_command": null,
+      "mandatory_for_github_pr": false
+    }
+  ],
+  "forbidden_github_actions": [
+    "add_review_to_pr",
+    "add_comment_to_issue",
+    "reply_to_review_comment",
+    "merge_pull_request",
+    "update_file",
+    "create_file",
+    "create_commit",
+    "update_ref",
+    "rerun_workflow_job"
+  ],
+  "reviewer_must": [
+    "pin_base_and_head_commit_shas",
+    "record_access_gaps",
+    "mark_truncated_diff_as_incomplete",
+    "use_file_or_commit_evidence_for_findings",
+    "mark_review_stale_if_head_commit_changes",
+    "never_publish_review_or_modify_repository_by_default"
+  ]
+}

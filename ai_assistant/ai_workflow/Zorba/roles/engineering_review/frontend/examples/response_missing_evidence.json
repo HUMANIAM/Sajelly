@@ -1,0 +1,210 @@
+{
+  "contract_version": "1.1",
+  "review_id": "EXAMPLE-FRONTEND-001",
+  "reviewer": "frontend",
+  "decision": "block",
+  "summary": "Synthetic example only: review outcome is illustrative, not an actual code review.",
+  "criteria": [
+    {
+      "id": "U-01",
+      "name": "Example criterion U-01",
+      "status": "pass",
+      "critical": true,
+      "evidence": [
+        "example fixture: frontend/src/features/search/hooks.ts (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "U-02",
+      "name": "Example criterion U-02",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: frontend/src/features/search/hooks.ts (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "U-03",
+      "name": "Example criterion U-03",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: frontend/src/features/search/hooks.ts (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "U-04",
+      "name": "Example criterion U-04",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: frontend/src/features/search/hooks.ts (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "U-05",
+      "name": "Example criterion U-05",
+      "status": "pass",
+      "critical": true,
+      "evidence": [
+        "example fixture: frontend/src/features/search/hooks.ts (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "U-06",
+      "name": "Example criterion U-06",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: frontend/src/features/search/hooks.ts (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "U-07",
+      "name": "Example criterion U-07",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: frontend/src/features/search/hooks.ts (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "U-08",
+      "name": "Example criterion U-08",
+      "status": "not_verified",
+      "critical": true,
+      "evidence": [],
+      "notes": "Risk-critical runtime evidence was unavailable"
+    },
+    {
+      "id": "FE-01",
+      "name": "Example criterion FE-01",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: frontend/src/features/search/hooks.ts (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "FE-02",
+      "name": "Example criterion FE-02",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: frontend/src/features/search/hooks.ts (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "FE-03",
+      "name": "Example criterion FE-03",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: frontend/src/features/search/hooks.ts (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "FE-04",
+      "name": "Example criterion FE-04",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: frontend/src/features/search/hooks.ts (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "FE-05",
+      "name": "Example criterion FE-05",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: frontend/src/features/search/hooks.ts (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "FE-06",
+      "name": "Example criterion FE-06",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: frontend/src/features/search/hooks.ts (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "FE-07",
+      "name": "Example criterion FE-07",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: frontend/src/features/search/hooks.ts (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "FE-08",
+      "name": "Example criterion FE-08",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: frontend/src/features/search/hooks.ts (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "FE-09",
+      "name": "Example criterion FE-09",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: frontend/src/features/search/hooks.ts (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "FE-10",
+      "name": "Example criterion FE-10",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: frontend/src/features/search/hooks.ts (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    }
+  ],
+  "findings": [],
+  "verification_assessment": {
+    "evidence_reviewed": [
+      "Synthetic fixture; no command was run in this package"
+    ],
+    "gaps": [
+      {
+        "area": "runtime verification",
+        "reason": "Critical test result not accessible",
+        "impact": "Cannot approve changed behavior"
+      }
+    ]
+  },
+  "residual_risks": [],
+  "human_decisions_required": [],
+  "metadata": {
+    "self_review": false,
+    "reviewed_at": "2026-11-05T12:00:00+00:00",
+    "contract_refs": [
+      "request_schema.json",
+      "response_schema.json"
+    ]
+  }
+}

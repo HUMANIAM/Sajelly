@@ -1,0 +1,108 @@
+{
+  "$schema": "./review_execution.schema.json",
+  "version": "1.0",
+  "models": {
+    "gpt-6-luna": [
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max"
+    ],
+    "gpt-6.1-sol": [
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max",
+      "ultra"
+    ],
+    "gpt-6-astra": [
+      "low",
+      "medium",
+      "high",
+      "xhigh",
+      "max"
+    ]
+  },
+  "profiles": {
+    "lightweight": {
+      "model": "gpt-6-luna",
+      "model_reasoning_effort": "medium"
+    },
+    "standard": {
+      "model": "gpt-6.1-sol",
+      "model_reasoning_effort": "medium"
+    },
+    "deep": {
+      "model": "gpt-6.1-sol",
+      "model_reasoning_effort": "high"
+    },
+    "critical": {
+      "model": "gpt-6-astra",
+      "model_reasoning_effort": "high"
+    }
+  },
+  "lead_profile": "deep",
+  "defaults": {
+    "change_risk": "high",
+    "system_criticality": "medium"
+  },
+  "risk_profiles": {
+    "low": "lightweight",
+    "medium": "standard",
+    "high": "deep",
+    "critical": "critical"
+  },
+  "max_parallel_helpers": 3,
+  "subjects": {
+    "maintainability": {
+      "title": "Maintainability and code clarity",
+      "profile": "lightweight",
+      "enabled": true,
+      "focus": "Readability and local complexity; formatting/naming rules belong to automation. Semantic redesign or ownership changes require architecture review."
+    },
+    "testing": {
+      "title": "Test gaps and verification",
+      "profile": "standard",
+      "enabled": true,
+      "focus": "Assess whether evidence demonstrates changed behavior, relevant failure paths and regression risks; do not generate test code."
+    },
+    "configuration": {
+      "title": "Configuration and dependencies",
+      "profile": "standard",
+      "enabled": true,
+      "focus": "Assess changed flags, defaults, package or build settings and compatibility. Security-sensitive or production-impacting settings raise change risk."
+    },
+    "architecture": {
+      "title": "Architecture and detailed design",
+      "profile": "deep",
+      "enabled": true,
+      "focus": "Assess changed ownership, public interfaces, state and dependency meaning; consume automated boundary results."
+    },
+    "security": {
+      "title": "Security and privacy",
+      "profile": "deep",
+      "enabled": true,
+      "focus": "Assess trust boundaries, authentication, authorization, tenant isolation, secrets and sensitive-data exposure."
+    },
+    "production": {
+      "title": "Production behavior and data integrity",
+      "profile": "deep",
+      "enabled": true,
+      "focus": "Assess changed transactions, concurrency, retries, side effects, meaningful outcomes and recovery."
+    },
+    "infrastructure": {
+      "title": "Infrastructure and deployment",
+      "profile": "deep",
+      "enabled": true,
+      "focus": "Assess permissions, CI, migrations, rollout, rollback and service continuity."
+    },
+    "safety": {
+      "title": "Safety and critical impact",
+      "profile": "critical",
+      "enabled": true,
+      "focus": "Assess safety-critical behavior, irreversible data loss and critical security or continuity risks. Human sign-off remains required."
+    }
+  }
+}

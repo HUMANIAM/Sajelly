@@ -1,0 +1,123 @@
+{
+  "contract_version": "1.1",
+  "review_id": "EXAMPLE-BACKEND-001",
+  "reviewer": "backend",
+  "stage": "implementation",
+  "goal": "Review a single feature change before human approval",
+  "requirements": [
+    "REQ-001: The feature provides the promised result and preserves existing behavior"
+  ],
+  "non_goals": [
+    "Do not refactor unrelated features"
+  ],
+  "assumptions": [
+    "Project layout reflects current repository policy"
+  ],
+  "source_of_truth_refs": [
+    {
+      "kind": "path",
+      "location": "docs/requirements.md",
+      "purpose": "Approved feature requirement",
+      "available": true
+    }
+  ],
+  "change": {
+    "changed_files": [
+      {
+        "path": "backend/src/features/resource/service.py",
+        "status": "modified",
+        "claimed_layers": [
+          "feature"
+        ],
+        "notes": "Sample change; not part of the uploaded WebAcademy repo"
+      }
+    ],
+    "diff": {
+      "kind": "git_range",
+      "value": "EXAMPLE_BASE..EXAMPLE_HEAD"
+    },
+    "artifact_refs": []
+  },
+  "project_context": {
+    "root": "/example/project",
+    "readme_ref": {
+      "kind": "path",
+      "location": "README.md",
+      "purpose": "Project setup",
+      "available": true
+    },
+    "physical_structure_ref": {
+      "kind": "path",
+      "location": "physical_structure.md",
+      "purpose": "Project architecture",
+      "available": true
+    },
+    "architecture_refs": [],
+    "nearest_example_refs": [
+      {
+        "kind": "path",
+        "location": "backend/src/features/resource/service.py",
+        "purpose": "Nearest known local pattern",
+        "available": true
+      }
+    ]
+  },
+  "backend_context": {
+    "language": "Python",
+    "framework": "example Python web project",
+    "persistence": "example SQL database",
+    "runtime_flow": [
+      "route",
+      "service",
+      "repo",
+      "model/database"
+    ],
+    "api_contract_refs": [
+      {
+        "kind": "path",
+        "location": "contracts/resource-api.yaml",
+        "purpose": "Resource API",
+        "available": true
+      }
+    ],
+    "persistence_refs": [
+      {
+        "kind": "path",
+        "location": "backend/src/features/resource/model.py",
+        "purpose": "Resource persistence model",
+        "available": true
+      }
+    ],
+    "migration_refs": [],
+    "external_side_effect_refs": [
+      {
+        "kind": "path",
+        "location": "backend/src/features/resource/adapter.py",
+        "purpose": "External storage adapter",
+        "available": true
+      }
+    ]
+  },
+  "risk": {
+    "level": "low",
+    "areas": [
+      "contract",
+      "state"
+    ],
+    "rationale": "Illustrative focused feature change"
+  },
+  "verification": [
+    {
+      "command": "example-project-test --feature",
+      "status": "passed",
+      "summary": "Illustrative fixture only; not executed here",
+      "evidence_ref": {
+        "kind": "path",
+        "location": "evidence/example-test.txt",
+        "purpose": "Example evidence",
+        "available": true
+      }
+    }
+  ],
+  "known_gaps": []
+}

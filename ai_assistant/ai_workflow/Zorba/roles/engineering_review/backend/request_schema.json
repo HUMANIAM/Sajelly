@@ -1,0 +1,270 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zorba.invalid/engineering_review/backend/request_schema.json",
+  "title": "Backend Engineering Review Request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "review_id",
+    "reviewer",
+    "stage",
+    "goal",
+    "requirements",
+    "non_goals",
+    "assumptions",
+    "source_of_truth_refs",
+    "change",
+    "project_context",
+    "backend_context",
+    "risk",
+    "verification",
+    "known_gaps"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "1.1"
+    },
+    "review_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewer": {
+      "const": "backend"
+    },
+    "stage": {
+      "type": "string",
+      "enum": [
+        "architecture",
+        "design",
+        "implementation"
+      ]
+    },
+    "goal": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "non_goals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "source_of_truth_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "../common/common.schema.json#/$defs/artifactReference"
+      }
+    },
+    "change": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "changed_files",
+        "diff",
+        "artifact_refs"
+      ],
+      "properties": {
+        "changed_files": {
+          "type": "array",
+          "items": {
+            "$ref": "../common/common.schema.json#/$defs/changedFile"
+          }
+        },
+        "diff": {
+          "anyOf": [
+            {
+              "$ref": "../common/common.schema.json#/$defs/diffReference"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "artifact_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "../common/common.schema.json#/$defs/artifactReference"
+          },
+          "description": "References needed to understand this change, including affected component_name.meta files describing purpose and internal/external dependencies. Consult only references relevant to concrete review questions. For artifact reviews, identify the prior/approved baseline and proposed version, or explicitly state absence for a new artifact."
+        }
+      }
+    },
+    "project_context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "root",
+        "readme_ref",
+        "physical_structure_ref",
+        "architecture_refs",
+        "nearest_example_refs"
+      ],
+      "properties": {
+        "root": {
+          "type": "string",
+          "minLength": 1
+        },
+        "readme_ref": {
+          "$ref": "../common/common.schema.json#/$defs/artifactReference"
+        },
+        "physical_structure_ref": {
+          "anyOf": [
+            {
+              "$ref": "../common/common.schema.json#/$defs/artifactReference"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "architecture_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "../common/common.schema.json#/$defs/artifactReference"
+          }
+        },
+        "nearest_example_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "../common/common.schema.json#/$defs/artifactReference"
+          }
+        }
+      }
+    },
+    "backend_context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "language",
+        "framework",
+        "persistence",
+        "runtime_flow",
+        "api_contract_refs",
+        "persistence_refs",
+        "migration_refs",
+        "external_side_effect_refs"
+      ],
+      "properties": {
+        "language": {
+          "type": "string",
+          "minLength": 1
+        },
+        "framework": {
+          "type": "string",
+          "minLength": 1
+        },
+        "persistence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "runtime_flow": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "api_contract_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "../common/common.schema.json#/$defs/artifactReference"
+          }
+        },
+        "persistence_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "../common/common.schema.json#/$defs/artifactReference"
+          }
+        },
+        "migration_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "../common/common.schema.json#/$defs/artifactReference"
+          }
+        },
+        "external_side_effect_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "../common/common.schema.json#/$defs/artifactReference"
+          }
+        }
+      }
+    },
+    "risk": {
+      "$ref": "../common/common.schema.json#/$defs/risk"
+    },
+    "verification": {
+      "type": "array",
+      "items": {
+        "$ref": "../common/common.schema.json#/$defs/verificationRecord"
+      }
+    },
+    "known_gaps": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "stage": {
+            "const": "implementation"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "properties": {
+              "diff": {
+                "$ref": "../common/common.schema.json#/$defs/diffReference"
+              }
+            },
+            "anyOf": [
+              {
+                "properties": {
+                  "changed_files": {
+                    "minItems": 1
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "diff": {
+                    "properties": {
+                      "kind": {
+                        "const": "pull_request"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
