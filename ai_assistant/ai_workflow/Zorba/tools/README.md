@@ -19,6 +19,9 @@ engineering judgment, not hide decisions or create an autonomous process.
 
 | Tool | Entry point | Purpose | Status | Tests |
 | --- | --- | --- | --- | --- |
+| Review execution planner | [`src/review_execution.py`](src/review_execution.py) via `zorba_cli.py --review-plan` | Validates configurable subject profiles and resolves model/effort assignments with risk and system-criticality floors. Exposes validated save for a future UI. | Local planning; no agent launches | Existing adapter regression suite plus recorded manual/launch verification; no new test cases |
+| Review artifact link checker | [`../roles/engineering_review/tools/artifact_links.py`](../roles/engineering_review/tools/artifact_links.py) | Checks saved Markdown file links from the document location; fails on broken targets or unsupported link forms. | Local checks only; external URLs unchecked | Real review artifacts and temporary malformed-link scenarios; no new test cases |
+| Review report publisher | [`../roles/engineering_review/common/skills/push_review_report.py`](../roles/engineering_review/common/skills/push_review_report.py) | Attaches an authorized reviewer report through GitHub CLI and verifies its exact read-back. | Explicit publication; no approval/merge | Local preparation checks and actual PR attachment/read-back |
 | Zorba setup CLI | [`src/zorba_cli.py`](src/zorba_cli.py) | Checks the vendor-neutral Zorba definitions and manages consent-driven Codex setup. Reports Claude specialist integration honestly as work in progress. | Codex supported; Claude WIP | [`tests/test_zorba_cli.py`](tests/test_zorba_cli.py) |
 
 ## Directory contract
@@ -37,26 +40,26 @@ stable interface, an owner or maintenance boundary, and meaningful tests.
 
 ## Using the Zorba setup CLI
 
-Run commands from the repository root. The tool uses only the Python 3.8
-standard library.
+Run commands from the repository root. Use the shared Zorba environment (Python 3.8+) with the declared dependencies
+installed. Review execution settings are validated with JSON Schema.
 
 Show the help:
 
 ```console
-python3 ai_assistant/ai_workflow/Zorba/tools/src/zorba_cli.py
+ai_assistant/ai_workflow/Zorba/.venv/bin/python ai_assistant/ai_workflow/Zorba/tools/src/zorba_cli.py
 ```
 
 Inspect vendor-neutral, Codex, and Claude status without changing files:
 
 ```console
-python3 ai_assistant/ai_workflow/Zorba/tools/src/zorba_cli.py --check
+ai_assistant/ai_workflow/Zorba/.venv/bin/python ai_assistant/ai_workflow/Zorba/tools/src/zorba_cli.py --check
 ```
 
 Set up or sync Codex with explicit contributor control:
 
 ```console
-python3 ai_assistant/ai_workflow/Zorba/tools/src/zorba_cli.py --setup codex
-python3 ai_assistant/ai_workflow/Zorba/tools/src/zorba_cli.py --sync codex
+ai_assistant/ai_workflow/Zorba/.venv/bin/python ai_assistant/ai_workflow/Zorba/tools/src/zorba_cli.py --setup codex
+ai_assistant/ai_workflow/Zorba/.venv/bin/python ai_assistant/ai_workflow/Zorba/tools/src/zorba_cli.py --sync codex
 ```
 
 Claude specialist setup remains work in progress. Claude actions report that
@@ -69,23 +72,23 @@ so the remaining drift is visible.
 
 ## Development setup
 
-Zorba tools are the only Python code owned by the reusable Zorba workflow. The
-tool project therefore keeps its Python and test dependencies in
+The setup CLI keeps its Python and test dependencies in
 [`pyproject.toml`](pyproject.toml), rather than in Sajelly application
-requirements.
+requirements. Reviewer tools use the same Zorba environment and declare their
+additional dependency in `roles/engineering_review/requirements.txt`.
 
-From the repository root, create the tool-local environment and install its
+From the repository root, create the Zorba-local environment and install its
 development dependencies:
 
 ```console
-python3 -m venv ai_assistant/ai_workflow/Zorba/tools/.venv
-ai_assistant/ai_workflow/Zorba/tools/.venv/bin/python -m pip install 'ai_assistant/ai_workflow/Zorba/tools[dev]'
+python3 -m venv ai_assistant/ai_workflow/Zorba/.venv
+ai_assistant/ai_workflow/Zorba/.venv/bin/python -m pip install 'ai_assistant/ai_workflow/Zorba/tools[dev]' -r ai_assistant/ai_workflow/Zorba/roles/engineering_review/requirements.txt
 ```
 
 Run the complete test suite:
 
 ```console
-ai_assistant/ai_workflow/Zorba/tools/.venv/bin/pytest -c ai_assistant/ai_workflow/Zorba/tools/pyproject.toml
+ai_assistant/ai_workflow/Zorba/.venv/bin/pytest -c ai_assistant/ai_workflow/Zorba/tools/pyproject.toml
 ```
 
 `project.dependencies` contains runtime dependencies shared by every tool.

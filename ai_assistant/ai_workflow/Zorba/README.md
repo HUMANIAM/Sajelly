@@ -98,3 +98,18 @@ This repository contains **role contracts and a proposed Zorba Guide pilot**, no
 Engineers may propose improvements to their own roles, contracts, templates, and practices through PRs. Their accumulated experience should improve the team, but new rules should follow evidence rather than ceremony.
 
 **A useful first test:** Give Zorba an ordinary-language request, authorize one specialist investigation, and check whether the result is honest, evidence-backed, reviewable, and resumable. Do not claim a successful agent invocation until it actually runs.
+
+## Python environment
+
+Use one local environment at `Zorba/.venv` for the tools and engineering review
+contracts. From the repository root:
+
+```console
+python3 -m venv ai_assistant/ai_workflow/Zorba/.venv
+ai_assistant/ai_workflow/Zorba/.venv/bin/python -m pip install 'ai_assistant/ai_workflow/Zorba/tools[dev]' -r ai_assistant/ai_workflow/Zorba/roles/engineering_review/requirements.txt
+ai_assistant/ai_workflow/Zorba/.venv/bin/python -m pytest -c ai_assistant/ai_workflow/Zorba/tools/pyproject.toml
+ai_assistant/ai_workflow/Zorba/.venv/bin/python -m unittest discover -s ai_assistant/ai_workflow/Zorba/roles/engineering_review/tests -v
+```
+
+The environment is ignored by Git. See the [engineering review guide](roles/engineering_review/README.md)
+for validator and renderer commands.

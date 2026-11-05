@@ -8,7 +8,9 @@ import shutil
 import sys
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable, Dict, List, Optional, Sequence, Set, TextIO, Tuple
+from typing import Any, Callable, Dict, List, Optional, Sequence, Set, TextIO, Tuple
+
+from review_execution import LEVELS, REVIEWERS, SETTINGS_PATH, load_settings, review_plan
 
 
 VENDORS = ("codex", "claude")
@@ -40,6 +42,8 @@ class Specialist:
     identifier: str
     display_name: str
     role: str
+    model: Optional[str] = None
+    model_reasoning_effort: Optional[str] = None
 
 
 @dataclass(frozen=True)
@@ -87,8 +91,14 @@ class ZorbaWorkspace:
         specialists: List[Specialist] = []
         identifiers: Set[str] = set()
         roles: Set[str] = set()
+        execution = None
+        if any(isinstance(record, dict) and record.get("id") in REVIEWERS for record in records):
+            try:
+                execution = load_settings(self.root / SETTINGS_PATH)
+            except (OSError, ValueError, ImportError) as error:
+                raise ZorbaConfigurationError("Invalid review execution settings: {}".format(error)) from error
         for position, record in enumerate(records, start=1):
-            specialist = self._validate_specialist(record, position)
+            specialist = self._validate_specialist(record, position, execution)
             if specialist.identifier in identifiers:
                 raise ZorbaConfigurationError(
                     "Duplicate specialist id: {}".format(specialist.identifier)
@@ -109,7 +119,9 @@ class ZorbaWorkspace:
             )
         return tuple(specialists)
 
-    def _validate_specialist(self, record: object, position: int) -> Specialist:
+    def _validate_specialist(
+        self, record: object, position: int, execution: Optional[Dict[str, Any]] = None
+    ) -> Specialist:
         """Validate one untrusted manifest record."""
         if not isinstance(record, dict):
             raise ZorbaConfigurationError(
@@ -149,7 +161,13 @@ class ZorbaWorkspace:
             raise ZorbaConfigurationError(
                 "Canonical role document is missing: {}".format(role_path)
             )
-        return Specialist(identifier, display_name, role)
+        profile = {}
+        if identifier in REVIEWERS and execution is not None:
+            profile = execution["profiles"][execution["lead_profile"]]
+        return Specialist(
+            identifier, display_name, role,
+            profile.get("model"), profile.get("model_reasoning_effort"),
+        )
 
     def role_description(self, specialist: Specialist) -> str:
         """Derive a concise description from the canonical role document."""
@@ -345,6 +363,8 @@ class ZorbaWorkspace:
         return (
             "name = {}\n".format(json.dumps(specialist.identifier))
             + "description = {}\n".format(json.dumps(description))
+            + ("model = {}\n".format(json.dumps(specialist.model)) if specialist.model else "")
+            + ("model_reasoning_effort = {}\n".format(json.dumps(specialist.model_reasoning_effort)) if specialist.model_reasoning_effort else "")
             + "developer_instructions = {}\n".format(json.dumps(instructions))
         )
 
@@ -598,7 +618,7 @@ def check_all(workspace: ZorbaWorkspace, output: TextIO) -> bool:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    """Build the dependency-free contributor setup interface."""
+    """Build the contributor setup and read-only review planning interface."""
     parser = argparse.ArgumentParser(
         prog="zorba_cli.py",
         description=(
@@ -614,6 +634,14 @@ def build_parser() -> argparse.ArgumentParser:
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     actions = parser.add_mutually_exclusive_group()
+    actions.add_argument(
+        "--review-plan",
+        action="store_true",
+        help="print a JSON model/effort plan for selected review subjects; do not launch agents",
+    )
+    parser.add_argument("--subjects", nargs="+", help="review subject IDs from review_execution.json")
+    parser.add_argument("--risk", choices=LEVELS, help="assessed change risk; absent means configured default")
+    parser.add_argument("--system-criticality", choices=LEVELS, help="impact of failure for the reviewed system")
     actions.add_argument(
         "--check",
         action="store_true",
@@ -646,6 +674,18 @@ def main(
     arguments = parser.parse_args(argv)
     root = repository_root or find_repository_root(Path(__file__).resolve().parent)
     workspace = ZorbaWorkspace(root)
+
+    if arguments.review_plan:
+        try:
+            settings = load_settings(root / SETTINGS_PATH)
+            plan = review_plan(settings, arguments.subjects or [], arguments.risk, arguments.system_criticality)
+        except (OSError, ValueError, ImportError) as error:
+            print(json.dumps({"error": str(error)}), file=stream)
+            return 1
+        print(json.dumps(plan, indent=2), file=stream)
+        return 0
+    if arguments.subjects or arguments.risk or arguments.system_criticality:
+        parser.error("--subjects, --risk and --system-criticality require --review-plan")
 
     if not (arguments.check or arguments.setup or arguments.sync):
         print("Zorba — Sajelly AI assistant setup\n", file=stream)
