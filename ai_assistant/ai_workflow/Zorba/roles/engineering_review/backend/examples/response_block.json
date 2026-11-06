@@ -1,0 +1,229 @@
+{
+  "contract_version": "1.1",
+  "review_id": "EXAMPLE-BACKEND-001",
+  "reviewer": "backend",
+  "decision": "block",
+  "summary": "Synthetic example only: review outcome is illustrative, not an actual code review.",
+  "criteria": [
+    {
+      "id": "U-01",
+      "name": "Example criterion U-01",
+      "status": "pass",
+      "critical": true,
+      "evidence": [
+        "example fixture: backend/src/features/resource/service.py (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "U-02",
+      "name": "Example criterion U-02",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: backend/src/features/resource/service.py (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "U-03",
+      "name": "Example criterion U-03",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: backend/src/features/resource/service.py (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "U-04",
+      "name": "Example criterion U-04",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: backend/src/features/resource/service.py (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "U-05",
+      "name": "Example criterion U-05",
+      "status": "fail",
+      "critical": true,
+      "evidence": [
+        "example fixture: backend/src/features/resource/service.py (synthetic; no real review performed)"
+      ],
+      "notes": "Synthetic example: promised state integrity is broken"
+    },
+    {
+      "id": "U-06",
+      "name": "Example criterion U-06",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: backend/src/features/resource/service.py (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "U-07",
+      "name": "Example criterion U-07",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: backend/src/features/resource/service.py (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "U-08",
+      "name": "Example criterion U-08",
+      "status": "pass",
+      "critical": true,
+      "evidence": [
+        "example fixture: backend/src/features/resource/service.py (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "BE-01",
+      "name": "Example criterion BE-01",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: backend/src/features/resource/service.py (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "BE-02",
+      "name": "Example criterion BE-02",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: backend/src/features/resource/service.py (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "BE-03",
+      "name": "Example criterion BE-03",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: backend/src/features/resource/service.py (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "BE-04",
+      "name": "Example criterion BE-04",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: backend/src/features/resource/service.py (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "BE-05",
+      "name": "Example criterion BE-05",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: backend/src/features/resource/service.py (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "BE-06",
+      "name": "Example criterion BE-06",
+      "status": "fail",
+      "critical": true,
+      "evidence": [
+        "example fixture: backend/src/features/resource/service.py (synthetic; no real review performed)"
+      ],
+      "notes": "Synthetic defect: partial commit on failed multi-step operation"
+    },
+    {
+      "id": "BE-07",
+      "name": "Example criterion BE-07",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: backend/src/features/resource/service.py (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "BE-08",
+      "name": "Example criterion BE-08",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: backend/src/features/resource/service.py (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "BE-09",
+      "name": "Example criterion BE-09",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: backend/src/features/resource/service.py (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    },
+    {
+      "id": "BE-10",
+      "name": "Example criterion BE-10",
+      "status": "pass",
+      "critical": false,
+      "evidence": [
+        "example fixture: backend/src/features/resource/service.py (synthetic; no real review performed)"
+      ],
+      "notes": "Illustrative passed criterion, NOT a real engineering assessment"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F-001",
+      "severity": "blocker",
+      "category": "behavior",
+      "title": "Partial transaction commit on external failure",
+      "owner": "backend",
+      "paths": [
+        "backend/src/features/resource/service.py"
+      ],
+      "evidence": [
+        "Synthetic illustration only: backend/src/features/resource/service.py:42 (NOT an inspected file)"
+      ],
+      "risk": "Inconsistent persisted state",
+      "required_resolution": "Let service own final transaction and handle partial failure",
+      "verification_needed": [
+        "Regression test for the risky failure path"
+      ],
+      "criterion_ids": [
+        "BE-06",
+        "U-05"
+      ]
+    }
+  ],
+  "verification_assessment": {
+    "evidence_reviewed": [
+      "Synthetic fixture; no command was run in this package"
+    ],
+    "gaps": []
+  },
+  "residual_risks": [],
+  "human_decisions_required": [],
+  "metadata": {
+    "self_review": false,
+    "reviewed_at": "2026-11-05T12:00:00+00:00",
+    "contract_refs": [
+      "request_schema.json",
+      "response_schema.json"
+    ]
+  }
+}

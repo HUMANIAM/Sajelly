@@ -34,6 +34,16 @@
       "id": "deployment_engineer",
       "display_name": "Deployment Engineer",
       "role": "deployment.md"
+    },
+    {
+      "id": "frontend_engineering_reviewer",
+      "display_name": "Frontend Engineering Reviewer",
+      "role": "frontend_engineering_review.md"
+    },
+    {
+      "id": "backend_engineering_reviewer",
+      "display_name": "Backend Engineering Reviewer",
+      "role": "backend_engineering_review.md"
     }
   ]
 }

@@ -1,0 +1,115 @@
+{
+  "contract_version": "1.1",
+  "review_id": "EXAMPLE-FRONTEND-001",
+  "reviewer": "frontend",
+  "stage": "implementation",
+  "goal": "Review a single feature change before human approval",
+  "requirements": [
+    "REQ-001: The feature provides the promised result and preserves existing behavior"
+  ],
+  "non_goals": [
+    "Do not refactor unrelated features"
+  ],
+  "assumptions": [
+    "Project layout reflects current repository policy"
+  ],
+  "source_of_truth_refs": [
+    {
+      "kind": "path",
+      "location": "docs/requirements.md",
+      "purpose": "Approved feature requirement",
+      "available": true
+    }
+  ],
+  "change": {
+    "changed_files": [
+      {
+        "path": "frontend/src/features/search/hooks.ts",
+        "status": "modified",
+        "claimed_layers": [
+          "feature"
+        ],
+        "notes": "Sample change; not part of the uploaded WebAcademy repo"
+      }
+    ],
+    "diff": {
+      "kind": "git_range",
+      "value": "EXAMPLE_BASE..EXAMPLE_HEAD"
+    },
+    "artifact_refs": []
+  },
+  "project_context": {
+    "root": "/example/project",
+    "readme_ref": {
+      "kind": "path",
+      "location": "README.md",
+      "purpose": "Project setup",
+      "available": true
+    },
+    "physical_structure_ref": {
+      "kind": "path",
+      "location": "physical_structure.md",
+      "purpose": "Project architecture",
+      "available": true
+    },
+    "architecture_refs": [],
+    "nearest_example_refs": [
+      {
+        "kind": "path",
+        "location": "frontend/src/features/search/hooks.ts",
+        "purpose": "Nearest known local pattern",
+        "available": true
+      }
+    ]
+  },
+  "frontend_context": {
+    "language": "TypeScript",
+    "framework": "example React project",
+    "runtime_flow": [
+      "page",
+      "hook",
+      "service",
+      "repo",
+      "API"
+    ],
+    "api_contract_refs": [
+      {
+        "kind": "path",
+        "location": "contracts/search-api.yaml",
+        "purpose": "Search backend contract",
+        "available": true
+      }
+    ],
+    "design_refs": [],
+    "browser_evidence_refs": [
+      {
+        "kind": "path",
+        "location": "evidence/search-state.txt",
+        "purpose": "Browser check of loading/error/results states",
+        "available": true
+      }
+    ]
+  },
+  "risk": {
+    "level": "low",
+    "areas": [
+      "contract",
+      "state"
+    ],
+    "rationale": "Illustrative focused feature change"
+  },
+  "verification": [
+    {
+      "command": "example-project-test --feature",
+      "status": "passed",
+      "summary": "Illustrative fixture only; not executed here",
+      "evidence_ref": {
+        "kind": "path",
+        "location": "evidence/example-test.txt",
+        "purpose": "Example evidence",
+        "available": true
+      }
+    }
+  ],
+  "known_gaps": []
+}

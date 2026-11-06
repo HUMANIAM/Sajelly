@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zorba.invalid/engineering_review/common/response_base.schema.json",
+  "title": "Engineering Review Response",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "review_id",
+    "reviewer",
+    "decision",
+    "summary",
+    "criteria",
+    "findings",
+    "verification_assessment",
+    "residual_risks",
+    "human_decisions_required",
+    "metadata"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "1.1"
+    },
+    "review_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewer": {
+      "type": "string",
+      "enum": [
+        "frontend",
+        "backend"
+      ]
+    },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "approve",
+        "approve_with_notes",
+        "block"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The reviewer's short plain-language overview for the engineer reading the report: explain the outcome, main reasons and relevant scope in a few sentences. Keep runtime scheduling, model rosters and contract bookkeeping in evidence/metadata rather than making them the introduction. Do not change findings or hide verification limits."
+    },
+    "criteria": {
+      "type": "array",
+      "minItems": 18,
+      "items": {
+        "$ref": "common.schema.json#/$defs/criterionAssessment"
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/finding"
+      }
+    },
+    "verification_assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidence_reviewed",
+        "gaps"
+      ],
+      "properties": {
+        "evidence_reviewed": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "gaps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "area",
+              "reason",
+              "impact"
+            ],
+            "properties": {
+              "area": {
+                "type": "string",
+                "minLength": 1
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              },
+              "impact": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "residual_risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "risk",
+          "impact",
+          "owner",
+          "exit_condition"
+        ],
+        "properties": {
+          "risk": {
+            "type": "string",
+            "minLength": 1
+          },
+          "impact": {
+            "type": "string",
+            "minLength": 1
+          },
+          "owner": {
+            "type": "string",
+            "enum": [
+              "frontend",
+              "backend",
+              "shared",
+              "human"
+            ]
+          },
+          "exit_condition": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "human_decisions_required": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "question",
+          "context",
+          "options"
+        ],
+        "properties": {
+          "question": {
+            "type": "string",
+            "minLength": 1
+          },
+          "context": {
+            "type": "string",
+            "minLength": 1
+          },
+          "options": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "self_review",
+        "reviewed_at",
+        "contract_refs"
+      ],
+      "properties": {
+        "self_review": {
+          "type": "boolean"
+        },
+        "reviewed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "contract_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

@@ -7,7 +7,7 @@ name = "zorba-tools"
 version = "0.1.0"
 description = "Reusable engineering tools for the vendor-neutral Zorba team"
 requires-python = ">=3.8"
-dependencies = []
+dependencies = ["jsonschema>=4.21,<5"]
 
 [project.optional-dependencies]
 dev = [
@@ -16,7 +16,7 @@ dev = [
 ]
 
 [tool.setuptools]
-py-modules = ["zorba_cli"]
+py-modules = ["zorba_cli", "review_execution"]
 package-dir = {"" = "src"}
 
 [tool.pytest.ini_options]
