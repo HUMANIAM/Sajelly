@@ -1,0 +1,7 @@
+{
+  "name": "Sajelly backend",
+  "dockerComposeFile": "compose.yaml",
+  "service": "backend",
+  "workspaceFolder": "/workspaces/Sajelly/backend",
+  "remoteUser": "vscode"
+}

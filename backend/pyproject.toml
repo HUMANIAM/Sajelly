@@ -1,0 +1,101 @@
+# pyproject.toml — how this package is built, described, and checked.
+# One file, read top to bottom: how to build it, what it is, and the tools that keep it honest.
+
+# --- How the package is built (PEP 517/518) ---
+[build-system]
+requires = ["setuptools>=84.2.1"]            # Tools needed to build the package, installed in an isolated build step.
+build-backend = "setuptools.build_meta"      # The backend that turns the source into a wheel/sdist.
+
+# --- What the package is (PEP 621 metadata) ---
+[project]
+name = "zorba-tools"                          # Distribution name — what you `pip install`.
+version = "0.1.0"                             # Released version of the package (bump on each release).
+description = "Small Python tools used by the Zorba engineering workflow."  # One-line summary shown on the package index.
+requires-python = ">=3.11"                    # Lowest Python supported.
+dependencies = []                             # Runtime dependencies. Empty: this package needs nothing extra to run.
+
+[project.scripts]
+zorba-git = "zorba_git:main"
+
+# Extra dependency groups, installed on demand, e.g. `pip install zorba-tools[test]`.
+[project.optional-dependencies]
+test = [                                      # Everything needed to run the test suite.
+    "pytest>=9.0,<10",                        # Test runner.
+    "pytest-cov>=7.1,<8",                     # Coverage plugin for pytest.
+]
+quality = [                                   # Everything needed for the quality checks.
+    "mypy>=2.4,<3",                           # Static type checker.
+    "ruff>=0.16,<0.17",                       # Linter and formatter.
+    "bandit>=1.8,<2",                         # Security scanner (added per review).
+]
+
+# --- Setuptools: where the code lives ---
+[tool.setuptools]
+package-dir = { "" = "src" }                  # "src layout": the package root is the src/ directory, not the repo root.
+py-modules = [                                # Single-file modules to ship (these are plain .py files, not packages).
+    "zorba_gh",                               # GitHub helper.
+    "zorba_git",                              # Git helper.
+    "zorba_subprocess",                       # Subprocess helper.
+]
+
+# --- pytest: how tests run ---
+[tool.pytest.ini_options]
+testpaths = ["test"]                          # Where pytest looks for tests by default.
+pythonpath = ["src"]                          # Add src/ to the import path so tests can import the package.
+addopts = [                                   # Options applied to every test run.
+    "-ra",                                    # Print a short summary of all results except plain passes.
+    "--strict-config",                        # Treat problems in this config as errors, not warnings.
+    "--strict-markers",                       # Unknown test markers are errors — catches typos in @pytest.mark names.
+    "--cov",                                  # Measure coverage (uses the [tool.coverage] settings below).
+    "--cov-report=term-missing",              # In the terminal report, list the exact lines not covered.
+]
+
+# --- coverage: what counts as "covered" ---
+[tool.coverage.run]
+branch = true                                 # Measure branch coverage (both sides of each if), not just line coverage.
+patch = ["subprocess"]                        # Include CLI processes launched by the tests (pytest-cov 7+).
+source = ["src"]                              # Only measure coverage for code under src/.
+
+[tool.coverage.report]
+fail_under = 90                               # Fail the run if total coverage drops below 90%.
+show_missing = true                           # Show which lines are uncovered in the report.
+skip_covered = true                           # Hide fully covered files to keep the report short.
+
+# --- ruff: linting and formatting ---
+[tool.ruff]
+target-version = "py311"                      # Assume Python 3.11 syntax when linting and fixing.
+line-length = 88                              # Maximum line length ruff aims for.
+src = ["src", "test"]                         # Roots used to tell first-party imports from third-party ones.
+
+[tool.ruff.lint]
+select = [                                    # Rule groups to enable (each prefix is a family of checks):
+    "B",                                      #   flake8-bugbear — likely bugs and risky patterns.
+    "E4",                                     #   pycodestyle — import placement (E401, E402).
+    "E7",                                     #   pycodestyle — statement style (bad comparisons, multiple statements).
+    "E9",                                     #   pycodestyle — syntax and runtime errors.
+    "F",                                      #   Pyflakes — unused imports, undefined names.
+    "I",                                      #   isort — import order and grouping.
+    "RUF",                                    #   Ruff's own rules.
+    "SIM",                                    #   flake8-simplify — suggests simpler equivalent code.
+    "UP",                                     #   pyupgrade — modernize syntax up to the py311 target.
+]
+
+[tool.ruff.format]
+quote-style = "double"                        # Prefer double quotes.
+indent-style = "space"                        # Indent with spaces, not tabs.
+line-ending = "auto"                          # Match the line endings already in each file.
+
+# --- bandit: security scanning (added per review) ---
+# Run with: bandit -c pyproject.toml -r src
+[tool.bandit]
+exclude_dirs = ["test"]                       # Scan the shipped code, not the tests.
+
+# --- mypy: static type checking ---
+[tool.mypy]
+python_version = "3.11"                       # Type-check as if running on Python 3.11.
+files = ["src"]                               # Only check code under src/.
+mypy_path = "src"                             # Where mypy resolves imports from.
+strict = true                                 # Turn on the full set of strict checks at once.
+pretty = true                                 # Nicer, easier-to-read error output.
+show_error_codes = true                       # Show each error's code (e.g. [arg-type]) so it can be looked up or silenced.
+warn_unused_configs = true                    # Warn about settings in this section that mypy never uses.
